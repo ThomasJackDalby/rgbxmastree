@@ -32,9 +32,6 @@ except KeyboardInterrupt:
     tree.close()
 
 def main():
-
-    pattern = 
-    
     pass
 
 if __name__ == "__main__":
