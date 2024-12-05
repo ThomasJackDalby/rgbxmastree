@@ -2,15 +2,21 @@ import os
 import sys
 import asyncio
 import random
+import importlib
 
-print(os.path.dirname(__file__))
+SUBMODULE_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "rgbxmastree")
+PATTERNS_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "patterns")
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "rgbxmastree"))
-print(sys.path)
-
+sys.path.insert(0, SUBMODULE_FOLDER_PATH)
 from tree import RGBXmasTree
 
+for file_path in os.listdir(PATTERNS_FOLDER_PATH):
+    print(file_path)
+    my_module = importlib.import_module(file_path)
+
 tree = RGBXmasTree()
+tree.off()
+exit()
 
 def random_color():
     r = random.random()
@@ -24,3 +30,12 @@ try:
         pixel.color = random_color()
 except KeyboardInterrupt:
     tree.close()
+
+def main():
+
+    pattern = 
+    
+    pass
+
+if __name__ == "__main__":
+    main()
