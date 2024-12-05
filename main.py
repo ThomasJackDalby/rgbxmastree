@@ -10,8 +10,8 @@ PATTERNS_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "patterns")
 sys.path.insert(0, SUBMODULE_FOLDER_PATH)
 from tree import RGBXmasTree
 
-for file_path in os.listdir(PATTERNS_FOLDER_PATH):
-    print(file_path)
+for file_name in os.listdir(PATTERNS_FOLDER_PATH):
+    file_path = os.path.join(PATTERNS_FOLDER_PATH, file_name)
     my_module = importlib.import_module(file_path)
 
 tree = RGBXmasTree()
