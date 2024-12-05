@@ -1,0 +1,3 @@
+[submodule "rgbxmastree"]
+	path = rgbxmastree
+	url = https://github.com/ThePiHut/rgbxmastree.git
