@@ -3,7 +3,10 @@ import sys
 import asyncio
 import random
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "rgbxmastree"))
+print(os.path.dirname(__file__))
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "rgbxmastree"))
+print(sys.path)
 
 from tree import RGBXmasTree
 
