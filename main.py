@@ -2,14 +2,19 @@ import os
 import sys
 import asyncio
 import random
+import json
 import importlib
-
+import mqtt
 SUBMODULE_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "rgbxmastree")
 PATTERNS_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "patterns")
 
-sys.path.insert(0, SUBMODULE_FOLDER_PATH)
-from tree import RGBXmasTree
+if False:
+    sys.path.insert(0, SUBMODULE_FOLDER_PATH)
+    from tree import RGBXmasTree
+else:
+    from mock_tree import RGBXmasTree
 
+# Dynamically load patterns
 PATTERNS = {}
 sys.path.insert(0, PATTERNS_FOLDER_PATH)
 for file_name in os.listdir(PATTERNS_FOLDER_PATH):
@@ -18,10 +23,13 @@ for file_name in os.listdir(PATTERNS_FOLDER_PATH):
     PATTERNS[file_name_wo_ext] = pattern
 
 def main():
+    mqtt.connect()
+
     tree = RGBXmasTree()
-    pattern = PATTERNS["test"]
+    pattern = PATTERNS["pixels"]
     while True:
         pattern.run(tree)
+        mqtt.loop()
 
 if __name__ == "__main__":
     main()
