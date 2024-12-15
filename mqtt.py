@@ -74,7 +74,7 @@ def on_connected(client, user_data, flags, result_code):
         client.subscribe(component.command_topic)
         component.publish_config(client)
         component.publish_available(client)
-        client.publish_state(client)
+        component.publish_state(client)
 
 def on_message(client, user_data, message):
     for component in COMPONENTS:
