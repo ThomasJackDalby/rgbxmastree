@@ -20,13 +20,13 @@ for file_name in os.listdir(PATTERNS_FOLDER_PATH):
     PATTERNS[file_name_wo_ext] = pattern
 
 def main():
-    mqtt.connect()
+    client = mqtt.connect()
 
     tree = RGBXmasTree()
     pattern = PATTERNS["pixels"]
     while True:
+        client.loop()
         pattern.run(tree)
-        mqtt.loop()
 
 if __name__ == "__main__":
     main()

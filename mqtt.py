@@ -63,3 +63,4 @@ def connect():
     client.on_connect = on_connected
     client.on_message = on_message
     client.connect(MQTT_HOST, MQTT_PORT)
+    return client
