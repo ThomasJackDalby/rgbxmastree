@@ -1,3 +1,2 @@
-rich
 paho-mqtt
-dotenv
+python-dotenv

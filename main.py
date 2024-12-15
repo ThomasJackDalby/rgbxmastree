@@ -1,14 +1,11 @@
 import os
 import sys
-import asyncio
-import random
-import json
 import importlib
 import mqtt
 SUBMODULE_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "rgbxmastree")
 PATTERNS_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "patterns")
 
-if False:
+if True:
     sys.path.insert(0, SUBMODULE_FOLDER_PATH)
     from tree import RGBXmasTree
 else:
