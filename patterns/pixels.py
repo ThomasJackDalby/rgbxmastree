@@ -22,7 +22,7 @@ def run(tree):
     ]
     for z in range(4):
         color = colors[z]
-        for i in range(len(BY_Z[0])):
-            tree[BY_Z[i]].color = color
+        for i in range(len(BY_Z[z])):
+            tree[BY_Z[z][i]].color = color
     
     
