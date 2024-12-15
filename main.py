@@ -3,6 +3,7 @@ import sys
 import importlib
 import mqtt
 import threading
+from time import sleep
 
 SUBMODULE_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "rgbxmastree")
 PATTERNS_FOLDER_PATH = os.path.join(os.path.dirname(__file__), "patterns")
@@ -27,12 +28,21 @@ def mqtt_task():
 
 def tree_task():
     tree = RGBXmasTree()
-    pattern = PATTERNS["pixels"]
+    current_pattern = None
     while True:   
-        if mqtt.enabled: pattern.run(tree)
-        else: tree.color = (0, 0, 0)
+        if mqtt.CURRENT_PATTERN is not None:
+            if current_pattern != mqtt.CURRENT_PATTERN:
+                pattern = PATTERNS[mqtt.CURRENT_PATTERN]
+                current_pattern = mqtt.CURRENT_PATTERN
+            pattern.run(tree)
+        else:
+            tree.off()
+            sleep(1)
 
 def main():
+    for pattern in PATTERNS:
+        mqtt.register_component(pattern)
+
     threading.Thread(target=mqtt_task).start()
     threading.Thread(target=tree_task).start()
 
