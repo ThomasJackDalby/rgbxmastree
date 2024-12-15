@@ -50,7 +50,7 @@ def on_connected(client, user_data, flags, result_code):
     client.subscribe(ENABLED_COMMAND_TOPIC)
     send_configuration_topic(client)
     client.publish(ENABLED_AVAILIBILITY_TOPIC, "online")
-    publish_enabled_state()
+    publish_enabled_state(client)
 
 def publish_enabled_state(client):
     client.publish(ENABLED_STATE_TOPIC, "on" if enabled else "off")
@@ -60,7 +60,7 @@ def on_message(client, user_data, message):
     print(user_data, message)
     if message.topic == ENABLED_COMMAND_TOPIC:
         enabled = not enabled
-        publish_enabled_state()
+        publish_enabled_state(client)
 
 def connect():
     client = mqtt.Client()
