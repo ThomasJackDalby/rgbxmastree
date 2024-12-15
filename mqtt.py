@@ -48,9 +48,7 @@ def send_configuration_topic(client):
 
 def on_connected(client, user_data, flags, result_code):
     client.subscribe(ENABLED_COMMAND_TOPIC)
-
     send_configuration_topic(client)
-
     client.publish(ENABLED_AVAILIBILITY_TOPIC, "online")
 
 def on_message(client, user_data, message):

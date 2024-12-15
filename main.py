@@ -24,9 +24,10 @@ def main():
 
     tree = RGBXmasTree()
     pattern = PATTERNS["pixels"]
-    while True:
+    while True:   
         client.loop()
-        pattern.run(tree)
+        if mqtt.enabled: pattern.run(tree)
+        else: tree.color = (0, 0, 0)
 
 if __name__ == "__main__":
     main()
