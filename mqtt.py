@@ -77,6 +77,7 @@ def on_connected(client, user_data, flags, result_code):
         component.publish_state(client)
 
 def on_message(client, user_data, message):
+    global CURRENT_PATTERN
     for component in COMPONENTS:
         if message.topic == component.command_topic:
             component.value = not component.value
