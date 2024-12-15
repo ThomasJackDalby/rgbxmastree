@@ -52,6 +52,7 @@ def on_connected(client, user_data, flags, result_code):
     client.publish(ENABLED_AVAILIBILITY_TOPIC, "online")
 
 def on_message(client, user_data, message):
+    global enabled
     print(user_data, message)
     if message.topic == ENABLED_COMMAND_TOPIC:
         enabled = not enabled
