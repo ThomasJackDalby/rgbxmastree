@@ -9,4 +9,3 @@ def run(tree):
         else:
             tree[id].color = (255, 255, 255)
         tree[sequence[i-1]].color = (0, 0, 0)
-        sleep(0.25)
