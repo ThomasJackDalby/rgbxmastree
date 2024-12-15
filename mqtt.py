@@ -72,7 +72,7 @@ def register_component(name):
 def on_connected(client, user_data, flags, result_code):
     for component in COMPONENTS:
         client.subscribe(component.command_topic)
-        component.send_config(client)
+        component.publish_config(client)
         component.publish_available(client)
         client.publish_state(client)
 
