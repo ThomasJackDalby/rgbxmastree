@@ -64,7 +64,7 @@ def get_device_info():
             "name": "Raspberry Pi Rgb Xmas Tree"
         }
 
-def register_component(name, callback):
+def register_component(name):
     component = SwitchComponent(name)
     COMPONENTS.append(component)
     return component
