@@ -22,7 +22,8 @@ def run(tree):
     ]
     for z in range(4):
         color = colors[z]
+        tree_value = list(tree.value)
         for i in range(len(BY_Z[z])):
-            tree[BY_Z[z][i]].color = color
-    
-    
+            tree_value[BY_Z[z][i]] = color
+        tree.value = tuple(tree_value)
+    tree.off()
