@@ -52,7 +52,9 @@ def on_connected(client, user_data, flags, result_code):
     client.publish(ENABLED_AVAILIBILITY_TOPIC, "online")
 
 def on_message(client, user_data, message):
+    print(user_data, message)
     if message.topic == ENABLED_COMMAND_TOPIC:
+        enabled = not enabled
         client.publish(ENABLED_STATE_TOPIC, "on" if enabled else "off")
 
 def connect():
