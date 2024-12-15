@@ -22,6 +22,8 @@ for file_name in os.listdir(PATTERNS_FOLDER_PATH):
     pattern = importlib.import_module(file_name_wo_ext)
     PATTERNS[file_name_wo_ext] = pattern
 
+print(PATTERNS)
+
 def mqtt_task():
     client = mqtt.connect()
     client.loop_forever()
