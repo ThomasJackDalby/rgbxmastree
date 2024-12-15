@@ -35,7 +35,7 @@ class SwitchComponent:
         config_payload ={
             "device": get_device_info(),
             "availability_topic": self.availability_topic,
-            "unique_id": "dalby/rgbxmastree/Enabled",
+            "unique_id": f"dalby/rgbxmastree/{self.name}",
             "state_topic": self.state_topic,
             "name": self.full_name,
             "device_class": "switch",
