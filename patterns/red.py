@@ -2,6 +2,7 @@
 is_red = False
 
 def run(tree):
+    global is_red
     if is_red:
         tree.color = (255, 0, 0)
     else:
