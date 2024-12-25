@@ -37,7 +37,12 @@ def tree_task():
             if current_pattern != mqtt.CURRENT_PATTERN:
                 pattern = PATTERNS[mqtt.CURRENT_PATTERN]
                 current_pattern = mqtt.CURRENT_PATTERN
-            pattern.run(tree)
+            try:
+                pattern.run(tree)
+            except Exception as e:
+                print(e)
+                current_pattern = None
+                mqtt.CURRENT_PATTERN = None
         else:
             tree.off()
             sleep(1)
