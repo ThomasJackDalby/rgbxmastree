@@ -29,7 +29,7 @@ class Light:
                 tree_value[self.light_id] = (0, 0, 0)
                 self.delay = random.randint(5, 20)
 
-lights = [Light(id) for id in range(12)]
+lights = [Light(id) for id in range(25)]
 
 def run(tree):
     tree_value = list(tree.value)
