@@ -4,6 +4,9 @@ COLOURS = [
     (255, 0, 0),
     (0, 255, 0),
     (0, 0, 255),
+    (255, 0, 255),
+    (0, 255, 255),
+    (255, 255, 0),
 ]
 
 class Light:
@@ -20,10 +23,11 @@ class Light:
             if self.color is None:
                 self.color = random.choice(COLOURS)
                 tree_value[self.light_id] = self.color
+                self.delay = random.randint(20, 50)
             else:
                 self.color = None
                 tree_value[self.light_id] = (0, 0, 0)
-            self.delay = random.randint(10, 50)
+                self.delay = random.randint(5, 20)
 
 lights = [Light(id) for id in range(12)]
 
